@@ -17,22 +17,22 @@ const app = express(); // Creates an instance of an Express application
 
 //  app.use(cors(corsOptions)); // Enables Cross-Origin Resource Sharing (CORS) with specified options
 app.use(
-  cors({
-  origin: function (origin, callback) {
-  return callback (null, true);
-  },
-  optionsSuccessStatus: 200,
-  credentials: true,
+    cors({
+    origin: function (origin, callback) {
+    return callback (null, true);
+    },
+    optionsSuccessStatus: 200,
+    credentials: true,
 })
 );
 
 
 
-app.use(cors(corsOptions));
+
  // Handle preflight requests globally
- app.use('/refresh', cors(corsOptions)); // Enable CORS for the refresh endpoint
+  // Enable CORS for the refresh endpoint
  
- app.options('*', cors(corsOptions)); // Preflight request handling for all routes
+  // Preflight request handling for all routes
 
  app.use(cookieParser());
 
