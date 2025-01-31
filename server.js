@@ -21,12 +21,15 @@ const corsOptions = {
   origin: "*",
 };
 
-app.use(cookieParser());
+
 
 app.use(cors(corsOptions));
  // Handle preflight requests globally
+ app.use('/refresh', cors(corsOptions)); // Enable CORS for the refresh endpoint
+ 
+ app.options('*', cors(corsOptions)); // Preflight request handling for all routes
 
-
+ app.use(cookieParser());
 
 app.use(express.json({ limit: '50mb' })); // Middleware to parse incoming JSON requests, with a size limit of 50MB
 
