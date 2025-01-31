@@ -78,6 +78,7 @@ const authController = {
                 httpOnly: true,
                 sameSite: "None",
                 secure: true,
+                path: "/"
               });
               
               res.cookie('refreshToken',refreshToken,{
@@ -85,6 +86,7 @@ const authController = {
                 httpOnly: true,
                 sameSite: "None",
                 secure: true,
+                path: "/"
               });
        //response send
        const userDto = new UserDTO(user);
@@ -161,6 +163,7 @@ const authController = {
                 httpOnly: true,
                 sameSite: "None",
                 secure: true,
+                path: "/"
               });
               
               res.cookie('refreshToken',refreshToken,{
@@ -168,6 +171,7 @@ const authController = {
                 httpOnly: true,
                 sameSite: "None",
                 secure: true,
+                path: "/"
               });
                   
                   const userDto = new UserDTO(user);
@@ -231,11 +235,13 @@ id = JWTService.VerifyRefreshToken(originalRefreshToken)._id;
           RefreshToken.updateOne({_id:id}, {token: refreshToken} );
           res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1000*60*60*24,
             sameSite: "None",
-            secure: true,})
+            secure: true,
+            path: "/"})
     
           res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 1000*60*60*24,
             sameSite: "None",
-            secure: true,})
+            secure: true,
+            path: "/"})
         }
         catch(e){
           return next(e);
