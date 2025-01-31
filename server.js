@@ -16,10 +16,15 @@ const app = express(); // Creates an instance of an Express application
  // Middleware to parse cookies from incoming requests
 
 //  app.use(cors(corsOptions)); // Enables Cross-Origin Resource Sharing (CORS) with specified options
-const corsOptions = {
-  credentials: true, 
-  origin: "*",
-};
+app.use(
+  cors({
+  origin: function (origin, callback) {
+  return callback (null, true);
+  },
+  optionsSuccessStatus: 200,
+  credentials: true,
+})
+);
 
 
 
