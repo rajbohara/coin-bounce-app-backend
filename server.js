@@ -18,7 +18,7 @@ const app = express(); // Creates an instance of an Express application
 //  app.use(cors(corsOptions)); // Enables Cross-Origin Resource Sharing (CORS) with specified options
 const corsOptions = {
   credentials: true, 
-  origin: ["https://coin-bounce-app-qm8b.onrender.com"],
+  origin: ["https://coin-bounce-app-api.onrender.com"],
 };
 
 app.use(cookieParser());
