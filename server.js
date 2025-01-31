@@ -18,14 +18,15 @@ app.use(cookieParser()); // Middleware to parse cookies from incoming requests
 //  app.use(cors(corsOptions)); // Enables Cross-Origin Resource Sharing (CORS) with specified options
 app.use(
     cors({
-    origin: function (origin, callback) {
-    return callback (null, true);
-    },
-    optionsSuccessStatus: 200,
-    credentials: true,
-})
-); // Enables Cross-Origin Resource Sharing (CORS) with specified options , used because of render.com deployement limitations of seperate backend and frontend repos and cloudinary
+        origin: ["https://coin-bounce-app-qm8b.onrender.com"], // Allow only your frontend domain
+        credentials: true, // Allow cookies and authentication headers
+        methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
+        allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
+        optionsSuccessStatus: 200, // Fix for legacy browsers
+    })
+);
 
+app.options("*", cors());
 
 
 app.use(express.json({ limit: '50mb' })); // Middleware to parse incoming JSON requests, with a size limit of 50MB
