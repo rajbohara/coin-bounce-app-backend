@@ -13,18 +13,18 @@ const cors = require('cors')
 
 const app = express(); // Creates an instance of an Express application
 
-app.use(cookieParser()); // Middleware to parse cookies from incoming requests
+ // Middleware to parse cookies from incoming requests
 
 //  app.use(cors(corsOptions)); // Enables Cross-Origin Resource Sharing (CORS) with specified options
-app.use(
-    cors({
-      origin:"*",
-      optionsSuccessStatus: 200,
-      credentials: true,
-    })
-  );
+const corsOptions = {
+  credentials: true, 
+  origin: ["https://coin-bounce-app-qm8b.onrender.com"],
+};
 
-app.options("*", cors()); // Handle preflight requests globally
+app.use(cookieParser());
+
+app.use(cors(corsOptions));
+ // Handle preflight requests globally
 
 
 
