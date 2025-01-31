@@ -75,12 +75,16 @@ const authController = {
               // send tokens in cookies
               res.cookie('accessToken',accessToken,{
                 maxAge: 1000*60*60*24,
-                httpOnly: true
+                httpOnly: true,
+                sameSite: "None",
+                secure: true,
               });
               
               res.cookie('refreshToken',refreshToken,{
                 maxAge: 1000*60*60*24,
-                httpOnly: true
+                httpOnly: true,
+                sameSite: "None",
+                secure: true,
               });
        //response send
        const userDto = new UserDTO(user);
@@ -154,12 +158,16 @@ const authController = {
               // send tokens in cookies
               res.cookie('accessToken',accessToken,{
                 maxAge: 1000*60*60*24,
-                httpOnly: true
+                httpOnly: true,
+                sameSite: "None",
+                secure: true,
               });
               
               res.cookie('refreshToken',refreshToken,{
                 maxAge: 1000*60*60*24,
-                httpOnly: true
+                httpOnly: true,
+                sameSite: "None",
+                secure: true,
               });
                   
                   const userDto = new UserDTO(user);
@@ -221,9 +229,13 @@ id = JWTService.VerifyRefreshToken(originalRefreshToken)._id;
 
           const refreshToken = JWTService.signRefreshToken({_id: id}, '60m');
           RefreshToken.updateOne({_id:id}, {token: refreshToken} );
-          res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1000*60*60*24})
+          res.cookie('accessToken', accessToken, { httpOnly: true, maxAge: 1000*60*60*24,
+            sameSite: "None",
+            secure: true,})
     
-          res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 1000*60*60*24})
+          res.cookie('refreshToken', refreshToken, { httpOnly: true, maxAge: 1000*60*60*24,
+            sameSite: "None",
+            secure: true,})
         }
         catch(e){
           return next(e);
