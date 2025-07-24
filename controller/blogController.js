@@ -175,7 +175,7 @@ Copy code
 .at(-1) extracts "photo.jpg". */
 
       // delete photo
-      fs.unlinkSync(`storage/${previousPhoto}`);
+    //  fs.unlinkSync(`storage/${previousPhoto}`);
 /*
 A method from Node.js's built-in fs (File System) module.
 It deletes the file at the specified path.
